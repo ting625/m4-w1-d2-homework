@@ -29,8 +29,14 @@
 
     <div id="root">
 
-        
+        <ul>
+            <li v-for="item in shoplist" v-text="item"></li>
+            <!-- OR <li v-for="item in shoplist">{{item}}</li> -->
+        </ul>
 
+        <input id="inputItem" type="text">
+        <button id="btn">Add item</button>
+    
     </div>
 
     <script>
@@ -39,9 +45,28 @@
             el: '#root',
 
             data: {
-                
-            }
-        })
+                shoplist: ['Salad', 'Eggs', 'Apples', 'Chicken']
+            },
+
+        //Move our even listeners here to it's more contained
+        /*Using mounted lifecycle hook to fire event listener once everything is ready to go, data is bounded and instance mounted to the DOM*/
+        mounted(){
+        //Create event listener for button using vanilla JS 
+        document.querySelector('#btn').addEventListener()'click', () => {
+            let 
+        }
+
+        
+        });
+
+        //Create event listener for button using vanilla JS
+        document.querySelector("#btn").addEventListener('click', () => {
+            let item= document.querySelector("#inputItem").value;
+            app.shoplist.push(item.value);
+
+        //Clear text in text box
+        item.value = ' ';
+        });
     </script>
     
 </body>
