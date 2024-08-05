@@ -34,8 +34,8 @@
             <!-- OR <li v-for="item in shoplist">{{item}}</li> -->
         </ul>
 
-        <input id="inputItem" type="text">
-        <button id="btn">Add item</button>
+        <input id="inputItem" type="text" v-model="newItem">
+        <button id="btn" v-on:click="addItem">Add item</button> <!--OR @click-->
     
     </div>
 
@@ -45,28 +45,32 @@
             el: '#root',
 
             data: {
+                newItem:'',
                 shoplist: ['Salad', 'Eggs', 'Apples', 'Chicken']
             },
 
+        methods: {
+            addItem() { //OR addItem : function() { //but addItem() is newer ES6 2015
+            this.shoplist.push(this.newItem);
+
+            //Clear text in the text box
+            this.newItem= '';
+                }
+        },
+
         //Move our even listeners here to it's more contained
         /*Using mounted lifecycle hook to fire event listener once everything is ready to go, data is bounded and instance mounted to the DOM*/
-        mounted(){
-        //Create event listener for button using vanilla JS 
-        document.querySelector('#btn').addEventListener()'click', () => {
-            let 
-        }
-
-        
-        });
+        /* mounted(){
 
         //Create event listener for button using vanilla JS
         document.querySelector("#btn").addEventListener('click', () => {
-            let item= document.querySelector("#inputItem").value;
-            app.shoplist.push(item.value);
+        let item= document.querySelector("inputItem").app.shoplist.push(item.value);
 
         //Clear text in text box
         item.value = ' ';
-        });
+            });
+        } */  
+    });
     </script>
     
 </body>
